@@ -1,3 +1,17 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  color: #303f9f;
+}
+a:focus,
+a:hover,
+a:active {
+  color: #7986cb;
+  text-decoration: none;
+}
+
 .pull-right {
   float: right;
 }
@@ -9,4 +23,55 @@
 }
 .clearfix:after {
   clear: both;
+}
+
+.container {
+  margin: 0 auto 30px;
+  max-width: 100%;
+  width: 800px;
+  padding: 0 20px;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 400px) {
+  .header h1 {
+    font-size: 20px;
+    line-height: 54px;
+  }
+}
+
+.header img {
+  height: 70px;
+  float: left;
+  margin: 5px 20px 5px 5px;
+}
+
+.header .reportbug {
+  margin-top: 25px;
+}
+
+.launchers .launcher {
+  border: 1px solid #333;
+  padding: 0 30px 0 0;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.launchers .launcher h2 a {
+  margin-left: 20px;
+}
+
+.launchers .launcher .image {
+  float: left;
+}
+
+.launchers .launcher .image img {
+  max-height: 65px;
+}
+
+.launchers .launcher .trash {
+  margin-top: 15px;
 }

@@ -42,37 +42,47 @@
     <meta name="application-name" content="Launcher"/>
 
     <!-- Google Fonts if you need -->
-    <!--<link href="https://fonts.googleapis.com/css?family=" rel="stylesheet" type="text/css">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/octicons/octicons.css">
 
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
 
-    <div class="container" ng-controller="launcher">
+    <div class="container" ng-controller="launcher" ng-cloak>
       <div class="header clearfix">
+        <span class="pull-right reportbug">
+          <a href="https://github.com/WebUtils/Launcher/issues" target="_blank"><span class="octicon mega-octicon octicon-bug"></span></a>
+        </span>
         <img src="img/icon/196.png" alt="launcher icon">
         <h1>WebUtils Launcher</h1>
-        <span class="pull-right">
-          <a href="https://github.com/WebUtils/Launcher/issues" target="_blank"><span class="octicon octicon-bug"></span></a>
-        </span>
       </div>
       <div class="launchers">
         <div class="launcher clearfix" ng-repeat="launcher in launchers track by $index">
-          <span ng-if="launcher.icon"><img ng-src="{{launcher.icon}}"></span>
+          <span class="pull-right trash"><a href="" ng-click="delete($index)"><span class="octicon mega-octicon octicon-trashcan"></span></a></span>
+          <span ng-if="launcher.icon" class="image"><img ng-src="{{launcher.icon}}"></span>
           <h2><a href="{{launcher.url}}" target="_blank">{{launcher.name}}</a></h2>
-          <span class="pull-right"><a href="" ng-click="delete($index)"><span class="octicon octicon-trashcan"></span></a></span>
         </div>
       </div>
       <div class="add">
-        <button class="btn" ng-click="enableAdd()" ng-if="!addEnabled"><span class="octicon octicon-plus"></span> Add</button>
-        <form ng-submit="add(name, url, icon)" ng-if="addEnabled">
-          <input ng-model="name" placeholder="name">
-          <input ng-model="url" placeholder="URL">
-          <input ng-model="icon" placeholder="icon">
-          <button class="btn" type="submit">Add</button>
+        <button class="btn btn-default" ng-click="enableAdd()" ng-if="!addEnabled"><span class="octicon octicon-plus"></span> Add</button>
+        <form role="form" ng-submit="add(name, url, icon)" ng-if="addEnabled">
+          <div class="form-group">
+            <label for="name">Launcher name</label>
+            <input type="text" class="form-control" id="name" ng-model="name" placeholder="The text to appear on the launcher">
+          </div>
+          <div class="form-group">
+            <label for="url">Page URL</label>
+            <input type="text" class="form-control" id="url" ng-model="url" placeholder="The URL to link to">
+          </div>
+          <div class="form-group">
+            <label for="icon">Icon</label>
+            <input type="text" class="form-control" id="icon" ng-model="icon" placeholder="Optionally provide an icon">
+          </div>
+          <button type="submit" class="btn btn-default"><span class="octicon octicon-plus"></span> Add</button>
         </form>
       </div>
     </div>

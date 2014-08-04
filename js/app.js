@@ -31,6 +31,9 @@ launcher.controller("launcher", function($log, $scope) {
   }
 
   $scope.add = function(name, url, icon) {
+    if (!name.length || !url.length) {
+      return;
+    }
     $scope.launchers.push({
       "name": name,
       "url": url,
